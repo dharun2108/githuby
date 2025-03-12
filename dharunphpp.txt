@@ -1,0 +1,68 @@
+ <?php
+
+function divide($num1, $num2) {
+    try {
+      
+        if ($num2 == 0) {
+            throw new Exception("Division by zero is not allowed.");
+        }
+        $result = $num1 / $num2;
+        echo "Result: $result";
+    } catch (Exception $e) {
+     
+        echo "Error: " . $e->getMessage();
+    } finally {
+
+        echo "\n Execution completed.\n";
+    }
+}
+divide(5, 0);
+
+function reverseString($str){
+    $reversed='';
+    for($i=strlen($str)-1;$i>=0;$i--){
+$reversed=$reversed.$str[$i];
+    }
+    return $reversed;
+}
+echo reverseString("hello world ");
+
+
+//mysql query
+//  SELECT DISTINCT num 
+// FROM numbers 
+// ORDER BY num DESC 
+// LIMIT 1 OFFSET 1; 
+
+//1
+class Vehicle {
+    public $brand;
+    public $model;
+
+    public function __construct($brand, $model) {
+        $this->brand = $brand;
+        $this->model = $model;
+    }
+    public function getDetails() {
+        return "Brand: " . $this->brand . ", Model: " . $this->model;
+    }
+}
+class Car extends Vehicle {
+    public $fuelType;
+    public function __construct($brand, $model, $fuelType) {
+        parent::__construct($brand, $model);
+        $this->fuelType = $fuelType;
+    }
+
+    public function getFuelType() {
+        return "Fuel Type: " . $this->fuelType;
+    }
+}
+
+$car = new Car("Toyota", "version2", "Petrol");
+
+echo $car->getDetails(); 
+echo $car->getFuelType();
+
+
+?> 

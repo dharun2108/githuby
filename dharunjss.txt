@@ -1,0 +1,110 @@
+//1
+function arrayTransformation(arr){
+    let result=[];
+    for(i=0;i<arr.length;i++){
+    result[i] =arr[i].toUpperCase();
+    }
+    result=result.sort().reverse().join('-');
+    return result;
+    }
+    console.log(arrayTransformation(["apple", "banana", "cherry", "date"]));
+    
+
+
+function removeDuplicates(str) {
+    let uniqueChars = "";
+    for (let i = 0; i < str.length; i++) {
+        let isUnique = true;
+        for (let j = 0; j < uniqueChars.length; j++) {
+            if (str[i] === uniqueChars[j]) {
+                isUnique = false;
+                break;
+            }
+        }
+        if (isUnique) {
+            uniqueChars += str[i];
+        }
+    }
+    return uniqueChars.split("").sort().join(""); 
+}
+const sortedUniqueString = removeDuplicates( "javascript");
+console.log("Unique String:", sortedUniqueString);
+
+
+//2
+function findFibboAndFact(number){
+if(number%2==0){
+    let fact = 1;
+    for (let i = 1; i <= number; i++) {
+        fact *= i;
+    }
+    return "factorial of number is :"+fact;
+}
+if(number %2!=0){
+    let fibSeries = [];
+    if (number >= 1) fibSeries.push(0);
+    if (number >= 2) fibSeries.push(1);
+    
+    for (let i = 2; i < number; i++) {
+        fibSeries.push(fibSeries[i - 1] + fibSeries[i - 2]);
+    }
+    return "fibonacci sequence of the number is :" +fibSeries;
+}
+}
+console.log(findFibboAndFact(5));
+
+//4
+function separateEvenOdd(arr) {
+    let evenNumbers = [];
+    let oddNumbers = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            evenNumbers.push(arr[i]);
+        } else {
+            oddNumbers.push(arr[i]);
+        }
+    }
+    return { evenNumbers, oddNumbers };
+}
+
+function sumArray(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+function findLargest(arr) {
+    let largest = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i];
+        }
+    }
+    return largest;
+}
+function findSmallest(arr) {
+    let smallest = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < smallest) {
+            smallest = arr[i];
+        }
+    }
+    return smallest;
+}
+
+const numbers = [12, 7, 9, 4, 6, 15, 8, 3];
+const { evenNumbers, oddNumbers } = separateEvenOdd(numbers);
+const sumOfEven = sumArray(evenNumbers);
+const sumOfOdd = sumArray(oddNumbers);
+
+if (sumOfEven > sumOfOdd) {
+    console.log("Difference:", sumOfEven - sumOfOdd);
+} else {
+    let largestEven = findLargest(evenNumbers);
+    let smallestOdd = findSmallest(oddNumbers);
+    console.log("Product of largest even and smallest odd:", largestEven * smallestOdd);
+}
+
